@@ -36,3 +36,25 @@ while True:
 
 
 
+   cv2.rectangle(current_frame, (left_pos,top_pos), (right_pos,bottom_pos), (255,0,0),2)
+
+   current_face_image = cv2.cvtColor(current_face_image, cv2.COLOR_BGR2GRAY)
+   current_face_image = cv2.resize(current_face_image, (48,48))
+   img_pixels = image.img_to_array(current_face_image)
+   img_pixels = np.expand_dims(img_pixels, axix = 0)
+   img_pixels /= 255
+
+   exp_prediction = face_exp_model.predict(img_pixels)
+   max_index = np.argmax(exp_prediction[0])
+   emotion_label = emotions_label[max_index]
+   font = cv2.FONT_HERSHEY_DUPLEX
+   cv2.putText(current_frame, emotion_label, (left_pos,bottom_pos), font, 0.5, (255,255,255),1)
+
+
+
+cv2.imshow("Webcam Video", current_frame)
+
+
+if cv2.waitKey(1) & 0xFF == ord('s'):
+  break
+  
