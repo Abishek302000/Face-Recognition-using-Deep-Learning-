@@ -32,4 +32,7 @@ while True:
     left_pos = left_pos*4
     
     print('found face {} at top,right:{},bottom:{},left:{}'.format(index+1,top_pos,right_pos,bottom_pos,left_pos))
-   current
+   current_face_image = current_frame[top_pos:bottom_pos,left_pos:right_pos]
+
+
+
