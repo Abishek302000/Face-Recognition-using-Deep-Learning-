@@ -24,4 +24,12 @@ while True:
   all_face_location = face_recognition.face_locations(current_frame_small,model='hog')
 
 
-for index
+ for index,current_face_location in enumerate(all_face_location):
+    top_pos, right_pos, bottom_pos, left_pos = current_face_location
+    top_pos = top_pos*4
+    right_pos = right_pos*4
+    bottom_pos = bottom_pos*4
+    left_pos = left_pos*4
+    
+    print('found face {} at top,right:{},bottom:{},left:{}'.format(index+1,top_pos,right_pos,bottom_pos,left_pos))
+   current
